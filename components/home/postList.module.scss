@@ -1,0 +1,13 @@
+.header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    h1 {
+        color: var(--dark);
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0;
+    }
+}

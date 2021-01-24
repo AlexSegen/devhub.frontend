@@ -1,0 +1,107 @@
+.dh {
+  &__post {
+    margin-bottom: 15px;
+
+    &:first-child {
+      .cover {
+        display: block !important;
+      }
+      .content {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+
+    .cover {
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+    }
+
+    .content {
+      background: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+
+      .title {
+        color: var(--dark);
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 0 0 10px;
+        padding-left: 30px;
+
+        a {
+          color: var(--dark);
+          text-decoration: none;
+          transition: all ease-in-out 0.1s;
+          &:focus,
+          &:hover {
+            color: var(--primary);
+          }
+        }
+      }
+    }
+
+    .tags {
+      margin: 10px 0;
+      padding-left: 30px;
+      > a {
+        display: inline-block;
+        color: var(--gray);
+        font-size: 0.9rem;
+        margin-right: 10px;
+        transition: all ease-in-out 0.1s;
+        &:focus,
+        &:hover {
+          color: var(--primary);
+        }
+      }
+    }
+
+    .stats {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 30px;
+    }
+
+    .author {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 10px;
+
+      .avatar {
+        display: block;
+        width: 40px;
+        height: 40px;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 100%;
+          border: 1px solid #ddd;
+        }
+      }
+
+      .info {
+        font-size: 0.8rem;
+        color: var(--gray);
+        padding-left: 10px;
+        .name {
+          font-weight: 600;
+          color: var(--gray);
+        }
+        .date {
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}

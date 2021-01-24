@@ -1,0 +1,12 @@
+.dh {
+    &__tags {
+        padding: 10px;
+        .list {
+            a {
+                display: block;
+                color: var(--dark);
+                padding: 10px 15px;
+            }
+        }
+    }
+}

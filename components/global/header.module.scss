@@ -1,0 +1,122 @@
+.dh {
+  &__header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+
+    &_container {
+      max-width: 1170px;
+      height: auto;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @media (max-width: 1366px) {
+        max-width: 90%;
+      }
+    }
+
+    &_navigation {
+      nav {
+        text-align: right;
+        > a {
+          color: var(--primary);
+          display: inline-block;
+          padding: 10px 15px;
+          white-space: nowrap;
+        }
+      }
+
+      .cta {
+        color: #fff;
+        border: 1px solid var(--primary);
+        background: var(--primary);
+        text-decoration: none;
+      }
+    }
+
+    &_brand {
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
+      }
+
+      a {
+        display: block;
+        max-width: 110px;
+        height: auto;
+      }
+    }
+  }
+}
+
+.user {
+  display: inline-block;
+  padding: 0 15px;
+  position: relative;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  &.__isOpen,
+  &:hover,
+  &:focus {
+    border: 2px solid var(--gray);
+  }
+}
+
+.dropdown {
+  right: 0;
+  top: 55px;
+  z-index: 1;
+  padding: 5px;
+  min-width: 180px;
+  background: #fff;
+  position: absolute;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-right: 1px solid var(--gray);
+  border-left: 1px solid var(--gray);
+  border-bottom: 1px solid var(--gray);
+
+  hr {
+    margin: 10px 0;
+  }
+
+  .name {
+    font-size: 1rem;
+    color: var(--dark);
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .email {
+    color: var(--gray);
+    font-size: 0.8rem;
+    text-align: left;
+  }
+
+  .nav {
+    &_item {
+      color: var(--dark);
+      display: block;
+      text-align: left;
+      padding: 10px;
+      white-space: nowrap;
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      text-decoration: none;
+    }
+  }
+}
