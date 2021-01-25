@@ -1,16 +1,19 @@
-import style from "./header.module.scss";
 import Link from 'next/link'
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useAuth } from '../../helpers/auth';
+
+import style from "./header.module.scss";
+import { AuthContext } from '../../context/authContext';
 
 const Header = () => {
 
-    const isAuth = true;
+    const { Logout, user, isAuthenticated } = useContext(AuthContext);
 
     const [dropdown, setDropdown] = useState(false);
 
-/*     const toggleDropdown = () => {
-
-    } */
+    const SignOut  = async () => {
+        Logout()
+    }
 
     return (
         <header className={style.dh__header}>
@@ -22,7 +25,7 @@ const Header = () => {
                 </div>
                 <div className={style.dh__header_navigation}>
                     {
-                        !isAuth && (<nav>
+                        !isAuthenticated && (<nav>
                                         <Link href="/login">
                                             <a>Log in</a>
                                         </Link>
@@ -34,20 +37,22 @@ const Header = () => {
                     }
 
                     {
-                        isAuth && (<nav>
+                        isAuthenticated && user && (<nav>
                                         <Link href="/new-post">
                                             <a className={style.cta}>Write a post</a>
                                         </Link>
 
                                         <div className={style.user}>
-                                            <img onClick={ () => setDropdown(!dropdown)} className={`${style.avatar} ${dropdown ? style.__isOpen : ""}`} src="http://placehold.it/100x100" alt=""/>
+                                            <img onClick={ () => setDropdown(!dropdown)}
+                                            className={`${style.avatar} ${dropdown ? style.__isOpen : ""}`}
+                                            src={user.avatar} alt={`${user.first_name} ${user.last_name}`}/>
 
                                             {
                                                 dropdown && (
 
                                                     <div className={style.dropdown}>
-                                                        <div className={style.name}>Alejandro Vivas</div>
-                                                        <div className={style.email}>ajvivas86@gmail.com</div>
+                                                        <div className={style.name}>{`${user.first_name} ${user.last_name}`}</div>
+                                                        <div className={style.email}>{user.email}</div>
                                                         <hr/>
                                                         <nav className={style.nav}>
                                                             <Link href="/new-post"><a className={style.nav_item} >Write a Post</a></Link>
@@ -56,7 +61,7 @@ const Header = () => {
                                                         </nav>
                                                         <hr/>
                                                         <nav className={style.nav}>
-                                                            <button type="button" className={style.nav_item} >Sign Out</button>
+                                                            <button onClick={SignOut} type="button" className={style.nav_item} >Sign Out</button>
                                                         </nav>
                                                     </div>
                                                 )

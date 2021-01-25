@@ -1,17 +1,17 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { AuthContext } from '../context/authContext';
+
 import Layout from '../components/global/Layout'
 import styles from './login.module.scss'
-
 
 const initialState = {email: "", password: ""};
 
 const Login = () => {
 
     const [user, setUser] = useState(initialState);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(false);
 
+    const { Login, loading, error } = useContext(AuthContext);
 
     const handleField = e => {
         const { name, value } = e.target;
@@ -27,13 +27,8 @@ const Login = () => {
         if (!user.email || !user.password)
             return;
 
+        Login(user);
 
-            setIsLoading(true)
-
-        setTimeout(() => {
-                console.log('user', user);
-                setIsLoading(false)
-        }, 1000);
     }
 
     return ( 
@@ -54,7 +49,7 @@ const Login = () => {
                         <span className="help-text"></span>
                     </div>
                     <div className="form-group text-center">
-                        <button disabled={isLoading} type="submit" className="btn btn-primary w-100">Continue</button>
+                        <button disabled={loading} type="submit" className="btn btn-primary w-100">Continue</button>
                     </div>
 
                     {

@@ -35,9 +35,9 @@ const authService = {
         try {
             const response = await ApiService.customRequest(requestData)
 
-            TokenService.saveToken(response.data.data.token);
-            TokenService.saveRefreshToken(response.data.data.token)
-            SetUser.saveUser(response.data.data);
+            TokenService.saveToken(response.data.token);
+            TokenService.saveRefreshToken(response.data.token)
+            SetUser.saveUser(response.data.user);
 
             ApiService.setHeader()
 
@@ -47,7 +47,10 @@ const authService = {
 
             return response.data
         } catch (error) {
-            throw new AuthenticationError(error.response.status, error.response.data.message, error.response.data)
+            if(error.response)
+                throw new AuthenticationError(error.response.status, error.response.data.message, error.response.data)
+            else
+                throw new Error(error.message)
         }
     },
 
@@ -68,7 +71,8 @@ const authService = {
 
             return response.data
         } catch (error) {
-            throw new AuthenticationError(error.response.status, error.response.data.message, error.response.data)
+            if(error.response)
+                throw new AuthenticationError(error.response.status, error.response.data.message, error.response.data)
         }
     },
 
@@ -89,11 +93,12 @@ const authService = {
             const response = await ApiService.customRequest(requestData)
             
             SetUser.removeUser();
-            SetUser.saveUser(response.data.data);
+            SetUser.saveUser(response.data.user);
             
-            return response.data.data
+            return response.data.user
         } catch (error) {
-            throw new AuthenticationError(error.response.status, error.response.data.message)
+            if(error.response)
+                throw new AuthenticationError(error.response.status, error.response.data.message)
         }
     },
 
@@ -114,12 +119,13 @@ const authService = {
             const response = await ApiService.customRequest(requestData)
 
             SetUser.removeUser();
-            SetUser.saveUser(response.data.data);
+            SetUser.saveUser(response.data.user);
             
-            return response.data.data
+            return response.data.user
 
         } catch (error) {
-            throw new AuthenticationError(error.response.status, error.response.data.message)
+            if(error.response)
+                throw new AuthenticationError(error.response.status, error.response.data.message)
         }
     },
 
