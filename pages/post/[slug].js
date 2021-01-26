@@ -15,7 +15,7 @@ import styles from './article.module.scss';
 const Article = () => {
 
     const { GetPost, post, loading, error } = useContext(BlogContext);
-    const { user } = useContext(AuthContext);
+    const { isAuthenticated, user } = useContext(AuthContext);
 
     const router = useRouter()
     const { slug } = router.query
@@ -72,7 +72,7 @@ const Article = () => {
                                 </div>
 
                                 {
-                                    (user._id === post.postedBy._id) && (
+                                    isAuthenticated && (user._id === post.postedBy._id) && (
                                         <div className="col-sm-6 text-right">
                                             <Link href={`/profile/posts/${post.slug}`}>
                                                 <a className="btn btn-sm btn-secondary">Edit this post</a>

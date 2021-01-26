@@ -1,0 +1,67 @@
+.dh {
+    &__toolbar {
+        padding-top: 30px;
+
+        .icon {
+            stroke: var(--gray);
+            width: 50px;
+            padding: 10px;
+            display: block;
+            margin: 0 auto;
+            border-radius: 100%;
+
+            &.__like {
+                
+            }
+    
+            &:hover,
+            &:focus {
+   
+                &.__like {
+                    stroke: var(--red);
+                    background: #ffe2e5;
+                }
+
+                &.__save {
+                    stroke: var(--teal);
+                    background: #e9fff8;
+                }
+            }
+        }
+    }
+}
+
+.tool {
+    
+    height: auto;
+    border: none;
+    margin: 0 auto 10px;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+
+    span {
+        display: block;
+    }
+
+    .icon {
+
+        &_container {
+            width: 65px;
+            height: 65px;
+            border-radius: 100%;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all ease-in-out .1s;
+        }
+
+    
+    }
+
+    &:hover,
+    &:focus {
+        outline: none;
+    }
+}

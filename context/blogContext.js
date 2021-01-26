@@ -13,7 +13,7 @@ const BlogContextProvider = ({ children }) => {
     setLoading(true);
     setError(false);
 
-    ApiService.get("/articles")
+    ApiService.get("/articles?sort=-createdAt")
       .then((res) => {
         setLoading(false);
         setPosts(res.data);

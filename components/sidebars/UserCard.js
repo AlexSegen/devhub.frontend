@@ -18,7 +18,7 @@ const Feature = ({label, value}) => {
 
 const UserCard = () => {
 
-    const { user } = useContext(AuthContext);
+    const { isAuthenticated, user } = useContext(AuthContext);
     const { post } = useContext(BlogContext);
 
 
@@ -42,7 +42,7 @@ const UserCard = () => {
             <p className={styles.introduction}>I am a passionate #FrontEnd #WebDeveloper & #WebDesigner at @Chileautos / @carsales 😎 Cada día amando más la web. #WebDesign #Gamer #Longboarder</p>
 
             {
-                post && (post.postedBy._id === user._id) && (
+                isAuthenticated && post && (post.postedBy._id === user._id) && (
                     <Link href="/profile">
                         <a className="btn btn-primary w-100 my-2">Edit Profile</a>
                     </Link>

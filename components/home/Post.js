@@ -8,7 +8,7 @@ const Post = ({post, index}) => {
             
 
             {
-                index === 0 && <Link href={`/post/${post.slug}`}>
+                index === 0 && post.cover &&<Link href={`/post/${post.slug}`}>
                                     <a className={styles.cover}>
                                         <img src={post.cover} alt={post.title}/>
                                     </a>

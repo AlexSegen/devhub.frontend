@@ -7,11 +7,16 @@ import { BlogContext } from "../../context/blogContext";
 
 const PostList = () => {
 
-  const { GetPosts, posts } = useContext(BlogContext);
+  const { GetPosts, posts, loading, error } = useContext(BlogContext);
 
   useEffect(() => {
     GetPosts()
   }, [])
+
+
+    if (loading)
+      return <>Loading posts</>
+
 
   return (
     <>

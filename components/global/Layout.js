@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Header from './Header';
 import Footer from './Footer';
-import Sidebar from './Sidebar';
 import RightSidebar from './RightSidebar';
+import LeftSidebar from './LeftSidebar';
 
 import styles from './layout.module.scss'
 
@@ -37,9 +37,7 @@ const Layout = ({title, description, location, grid, children}) => {
         
         <main className="container">
             <div className={styles.dh__grid + " " + gridTemplate(grid)}>
-                <div>
-                    { location === "home" && <Sidebar/> }
-                </div>
+                <LeftSidebar location={location}/>
                 
                 <div>
                     {children}
