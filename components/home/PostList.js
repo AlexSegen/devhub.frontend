@@ -5,13 +5,13 @@ import styles from './postList.module.scss'
 
 import { BlogContext } from "../../context/blogContext";
 
-const PostList = () => {
+const PostList = ({title, resource, value}) => {
 
   const { GetPosts, posts, loading, error } = useContext(BlogContext);
 
   useEffect(() => {
-    GetPosts()
-  }, [])
+    GetPosts(resource, value)
+  }, [value])
 
 
     if (loading)
@@ -21,7 +21,7 @@ const PostList = () => {
   return (
     <>
       <div className={styles.header}>
-        <h1>Posts</h1>
+        <h1>{ title || "Posts"}</h1>
         <PostFilter/>
       </div>
       

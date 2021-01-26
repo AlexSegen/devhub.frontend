@@ -4,8 +4,13 @@
         .list {
             a {
                 display: block;
-                color: var(--dark);
+                color: var(--gray);
                 padding: 10px 15px;
+            }
+            .active {
+                color: var(--dark);
+                font-weight: 600;
+                pointer-events: none;
             }
         }
     }

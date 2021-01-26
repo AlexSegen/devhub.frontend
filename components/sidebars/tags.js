@@ -1,11 +1,16 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import {useState, useEffect } from 'react';
 import ApiService from '../../services/api.service';
+
 
 
 import styles from './tags.module.scss';
 
 const Tags = () => {
+
+    const router = useRouter()
+    const { slug } = router.query
 
     const [tags, setTags] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -38,7 +43,7 @@ const Tags = () => {
                 {
                     tags.map(tag => (
                         <Link key={tag._id} href={`/tag/${tag.slug}`}>
-                            <a>#{tag.name}</a>
+                            <a className={slug === tag.slug ? styles.active : ""}>#{tag.name}</a>
                         </Link>
                     ))
                 }              

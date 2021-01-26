@@ -9,11 +9,23 @@ const BlogContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const GetPosts = () => {
+
+  const getResource = (resource, value) => {
+    switch (resource) {
+      case "tag":
+        return "/articles/tag/" + value
+      case "category":
+        return "/articles/category/" + value
+      default:
+        return "/articles"
+    }
+  }
+
+  const GetPosts = (resource, value) => {
     setLoading(true);
     setError(false);
 
-    ApiService.get("/articles?sort=-createdAt")
+    ApiService.get(getResource(resource, value) + "?sort=-createdAt")
       .then((res) => {
         setLoading(false);
         setPosts(res.data);
