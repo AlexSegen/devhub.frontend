@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useContext, useEffect } from "react";
 import Post from "./Post";
 import PostFilter from "./PostFilter";
 import styles from './postList.module.scss'
 
-import { posts as records } from "../../services/mockups";
+import { BlogContext } from "../../context/blogContext";
 
 const PostList = () => {
-  const [posts] = useState(records);
+
+  const { GetPosts, posts } = useContext(BlogContext);
+
+  useEffect(() => {
+    GetPosts()
+  }, [])
 
   return (
     <>

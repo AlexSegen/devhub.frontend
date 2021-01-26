@@ -1,0 +1,89 @@
+.dh {
+    &__article {
+        min-height: 80vh;
+        padding-right: 40px;
+        padding-left: 40px;
+
+        .title {
+            font-weight: bold;
+            font-size: 2.5rem;
+            margin: 15px 0;
+            color: var(--dark);
+        }
+
+        .content {
+            font-size: 1.1rem;
+            line-height: 2rem;
+            padding: 40px 20px;
+
+            img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 15px auto;
+            }
+        }
+
+        .cover {
+            margin-bottom: 20px;
+            img {
+                width: 100%;            
+                height: auto;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        .tags {
+            padding: 10px;
+            margin: 20px 0;
+            a {
+                color: var(--gray);
+                font-size: .9rem;
+                text-decoration: none;
+                padding: 5px;
+                margin-right: 10px;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+        }
+
+        .author {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 10px;
+      
+            .avatar {
+              display: block;
+              width: 40px;
+              height: 40px;
+              img {
+                width: 40px;
+                height: 40px;
+                border-radius: 100%;
+                border: 1px solid #ddd;
+              }
+            }
+
+            .info {
+                font-size: 0.8rem;
+                color: var(--gray);
+                padding-left: 10px;
+                .name {
+                  font-weight: 600;
+                  color: var(--dark);
+                }
+                .date {
+                  font-weight: normal;
+                  span {
+                      font-weight: 600;
+                      color: var(--gray);
+                  }
+                }
+              }
+        }
+    }
+}

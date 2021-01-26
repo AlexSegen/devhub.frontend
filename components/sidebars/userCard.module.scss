@@ -1,0 +1,59 @@
+.dh {
+    &__user {
+
+        .details {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 15px;
+            
+            > div {
+                padding-left: 10px;
+            }
+        }
+
+        .joined {
+            color: var(--gray);
+            font-size: .8rem;
+            margin: 0;
+        }
+
+        .name {
+            color: var(--dark);
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0 2px;
+        }
+
+        .introduction {
+            color: var(--gray);
+            font-size: .9rem;
+            margin: 0 0 10px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+        }
+
+        .feature {
+            margin-bottom: 10px;
+            .label {
+                font-weight: 600;
+                color: var(--gray);
+                margin: 0 0 2px;
+            }
+
+            .value {
+                font-weight: normal;
+                color: var(--dark);
+                margin: 0;
+            }
+
+
+        }
+
+        
+    }
+}
