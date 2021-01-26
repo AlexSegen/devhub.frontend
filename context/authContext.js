@@ -29,11 +29,12 @@ const AuthContextProvider = ({ children }) => {
             setAuthenticated(true);
             router.push('/');
 
-        }).catch(err => {
+        }).catch(error => {
             setLoading(false);
 
-            if (err.response) {
-                setError(err.response.data.message)
+            if (error.data && error.data.name === "ValidationError") {
+                const message = error.data.details.body.length > 0 ? error.data.details.body[0].message : "Validation error."
+                setError(message);
                 return;
             }
 
@@ -54,8 +55,9 @@ const AuthContextProvider = ({ children }) => {
         }).catch(error => {
             setLoading(false);
 
-            if (error.data && error.data.data && error.data.data.length > 0) {
-                setError(error.data.data[0].msg);
+            if (error.data && error.data.name === "ValidationError") {
+                const message = error.data.details.body.length > 0 ? error.data.details.body[0].message : "Validation error."
+                setError(message);
                 return;
             }
 
@@ -72,6 +74,28 @@ const AuthContextProvider = ({ children }) => {
         router.push("/")
     }
 
+    
+    const GetProfile = () => {
+        setLoading(true);
+        setError(false);
+
+        authService.getProfile().then(data => {
+            console.log('getProfile', data)
+            setLoading(false);
+            setUser(data);
+
+        }).catch(err => {
+            setLoading(false);
+
+            if (err.response) {
+                setError(err.response.data.message)
+                return;
+            }
+
+            setError(err.message)
+        });
+    }
+
     useEffect(() => {
         setAuthenticated(!!TokenService.getToken());
         setUser(SetUser.getUser())
@@ -80,7 +104,7 @@ const AuthContextProvider = ({ children }) => {
 
 
     return (
-        <AuthContext.Provider value={{ Login, Logout, Register, isAuthenticated, user, token, loading, error }}>
+        <AuthContext.Provider value={{ Login, Logout, Register, GetProfile, isAuthenticated, user, token, loading, error }}>
             {children}
         </AuthContext.Provider>
     );

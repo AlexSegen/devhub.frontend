@@ -57,7 +57,7 @@ const Header = () => {
                                                         <nav className={style.nav}>
                                                             <Link href="/new-post"><a className={style.nav_item} >Write a Post</a></Link>
                                                             <Link href="/new-post"><a className={style.nav_item}>Reading List</a></Link>
-                                                            <Link href="/new-post"><a className={style.nav_item}>Settings</a></Link>
+                                                            <Link href="/profile"><a className={style.nav_item}>Profile</a></Link>
                                                         </nav>
                                                         <hr/>
                                                         <nav className={style.nav}>

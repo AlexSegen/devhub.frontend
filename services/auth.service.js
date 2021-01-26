@@ -73,6 +73,35 @@ const authService = {
         } catch (error) {
             if(error.response)
                 throw new AuthenticationError(error.response.status, error.response.data.message, error.response.data)
+            else
+                throw new Error(error.message)
+        }
+    },
+
+
+    /**
+     * Get user profile 
+     * 
+     * @returns user
+     * @throws AuthenticationError 
+     **/
+    getProfile: async function () {
+        const requestData = {
+            method: 'get',
+            url: "/auth/me/",
+        }
+
+        try {
+            const response = await ApiService.customRequest(requestData)
+
+            SetUser.saveUser(response.data);
+
+            return response.data
+        } catch (error) {
+            if(error.response)
+                throw new AuthenticationError(error.response.status, error.response.data.message, error.response.data)
+            else
+                throw new Error(error.message)
         }
     },
 
@@ -99,6 +128,8 @@ const authService = {
         } catch (error) {
             if(error.response)
                 throw new AuthenticationError(error.response.status, error.response.data.message)
+            else
+                throw new Error(error.message)
         }
     },
 
@@ -126,6 +157,8 @@ const authService = {
         } catch (error) {
             if(error.response)
                 throw new AuthenticationError(error.response.status, error.response.data.message)
+            else
+                throw new Error(error.message)
         }
     },
 
@@ -146,7 +179,10 @@ const authService = {
             const response = await ApiService.customRequest(requestData)
             return response.data
         } catch (error) {
-            throw new AuthenticationError(error.response.status, error.response.data.message)
+            if(error.response)
+                throw new AuthenticationError(error.response.status, error.response.data.message)
+            else
+                throw new Error(error.message)
         }
     },
 
@@ -169,7 +205,10 @@ const authService = {
             const response = await ApiService.customRequest(requestData)
             return response.data
         } catch (error) {
-            throw new AuthenticationError(error.response.status, error.response.data.message)
+            if(error.response)
+                throw new AuthenticationError(error.response.status, error.response.data.message)
+            else
+                throw new Error(error.message)
         }
     },
 
@@ -190,7 +229,10 @@ const authService = {
             const response = await ApiService.customRequest(requestData)
             return response.data
         } catch (error) {
-            throw new AuthenticationError(error.response.status, error.response.data.message)
+            if(error.response)
+                throw new AuthenticationError(error.response.status, error.response.data.message)
+            else
+                throw new Error(error.message)
         }
     },
 
@@ -214,7 +256,10 @@ const authService = {
             const response = await ApiService.customRequest(requestData)
             return response.data
         } catch (error) {
-            throw new AuthenticationError(error.response.status, error.response.data.message)
+            if(error.response)
+                throw new AuthenticationError(error.response.status, error.response.data.message)
+            else
+                throw new Error(error.message)
         }
     },
 
@@ -233,7 +278,10 @@ const authService = {
             const response = await ApiService.customRequest(requestData)
             return response.data
         } catch (error) {
-            throw new AuthenticationError(error.response.status, error.response.data.message)
+            if(error.response)
+                throw new AuthenticationError(error.response.status, error.response.data.message)
+            else
+                throw new Error(error.message)
         }
     },
 
@@ -266,7 +314,10 @@ const authService = {
 
             return response.data.access_token
         } catch (error) {
-            throw new AuthenticationError(error.response.status, error.response.data.detail)
+            if(error.response)
+                throw new AuthenticationError(error.response.status, error.response.data.message)
+            else
+                throw new Error(error.message)
         }
 
     },
