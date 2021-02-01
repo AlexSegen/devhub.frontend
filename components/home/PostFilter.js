@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
+import { useState, useEffect } from 'react';
 import styles from "./postFilter.module.scss";
 
 const PostFilter = () => {
@@ -10,15 +10,16 @@ const PostFilter = () => {
 
   const isActive = (filter) => (filter === activeFilter ? styles.active : "");
 
-/*   const validParams = ["newest", "week", "month", "year"];
-
-  if (!validParams.some(item => item === period)) {
-    console.log('Hello')
-  } */
+  // const validParams = ["newest", "week", "month", "year"];
 
   useEffect(() => {
-    setActiveFilter(period || "newest")
-  }, [])
+    setActiveFilter(period || "newest");
+
+    /* if (!validParams.some(item => item === activeFilter)) {
+      console.log('Hello')
+    } */
+
+  }, [period])
   
 
   return (
