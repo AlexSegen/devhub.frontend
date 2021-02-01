@@ -1,9 +1,8 @@
 import Link from 'next/link'
 import { useContext, useState } from "react";
-import { useAuth } from '../../helpers/auth';
+import { AuthContext } from '../../context/authContext';
 
 import style from "./header.module.scss";
-import { AuthContext } from '../../context/authContext';
 
 const Header = () => {
 

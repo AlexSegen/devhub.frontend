@@ -1,8 +1,15 @@
 import Link from 'next/link'
-import styles from './post.module.scss'
+import { useContext, useState } from "react";
 import { formatDate } from '../../helpers/utils';
+import { AuthContext } from '../../context/authContext';
+
+import styles from './post.module.scss'
 
 const Post = ({post, index}) => {
+
+    const { isAuthenticated } = useContext(AuthContext);
+
+
     return (
         <div className={styles.dh__post}>
             
@@ -55,7 +62,11 @@ const Post = ({post, index}) => {
                 <div className={styles.stats}>
                     <div>{post.reactionsCount} reactions</div> 
                     <div>{post.commentsCount} comments</div>
-                    <div><button type="button" className="btn btn-default">Save</button></div>
+                    <div>
+                        {
+                            isAuthenticated && <button type="button" className="btn btn-default">Save</button>
+                        }
+                    </div>
                 </div>
             </div>
             
