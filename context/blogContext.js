@@ -14,6 +14,8 @@ const BlogContextProvider = ({ children }) => {
     switch (resource) {
       case "tag":
         return "/articles/tag/" + value
+      case "top":
+          return "/articles/top/" + value
       case "category":
         return "/articles/category/" + value
       default:

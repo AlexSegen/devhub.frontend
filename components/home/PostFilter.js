@@ -1,26 +1,43 @@
-import { useState } from "react";
+import Link from "next/link";
+import { useState, useEffect } from 'react';
+import { useRouter } from "next/router";
 import styles from "./postFilter.module.scss";
 
 const PostFilter = () => {
-
-  const [activeFilter, setActiveFilter] = useState("recent");
+  const router = useRouter();
+  const { period } = router.query;
+  const [activeFilter, setActiveFilter] = useState();
 
   const isActive = (filter) => (filter === activeFilter ? styles.active : "");
 
+/*   const validParams = ["newest", "week", "month", "year"];
+
+  if (!validParams.some(item => item === period)) {
+    console.log('Hello')
+  } */
+
+  useEffect(() => {
+    setActiveFilter(period || "newest")
+  }, [])
+  
+
   return (
     <div className={styles.dh__filters}>
-      <button onClick={()=> setActiveFilter('recent')} className={isActive("recent")} type="button">
-        Newest
-      </button>
-      <button onClick={()=> setActiveFilter('week')} className={isActive("week")} type="button">
-        Week
-      </button>
-      <button onClick={()=> setActiveFilter('month')} className={isActive("month")} type="button">
-        Month
-      </button>
-      <button onClick={()=> setActiveFilter('year')} className={isActive("year")} type="button">
-        Year
-      </button>
+      <Link href="/top/newest">
+        <a className={isActive("newest")}>Newest</a>
+      </Link>
+
+      <Link href="/top/week">
+        <a className={isActive("week")}>Week</a>
+      </Link>
+
+      <Link href="/top/month">
+        <a className={isActive("month")}>Month</a>
+      </Link>
+
+      <Link href="/top/year">
+        <a className={isActive("year")}>Year</a>
+      </Link>
     </div>
   );
 };

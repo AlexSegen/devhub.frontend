@@ -38,7 +38,7 @@ const AuthContextProvider = ({ children }) => {
                 return;
             }
 
-            setError(err.message)
+            setError(error.message)
         });
 
     };
@@ -80,19 +80,18 @@ const AuthContextProvider = ({ children }) => {
         setError(false);
 
         authService.getProfile().then(data => {
-            console.log('getProfile', data)
             setLoading(false);
             setUser(data);
 
-        }).catch(err => {
+        }).catch(error => {
             setLoading(false);
 
-            if (err.response) {
-                setError(err.response.data.message)
+            if (error.response) {
+                setError(error.response.data.message)
                 return;
             }
 
-            setError(err.message)
+            setError(error.message)
         });
     }
 
