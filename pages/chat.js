@@ -3,6 +3,7 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import { AuthContext } from "../context/authContext";
 import { SocketService as socket } from '../services/socket.service'
 
+import withAuth from '../components/withAuth'
 import Layout from "../components/global/Layout";
 
 import styles from './chat.module.scss';
@@ -25,6 +26,8 @@ const Chat = () => {
             user,
             message
         });
+
+        setMessage("");
 
       }
   }
@@ -71,7 +74,7 @@ const Chat = () => {
         </div>
 
         <form onSubmit={submitMessage} className={`${styles.form}`}>
-            <input className="form-control" onChange={e => setMessage(e.target.value)} type="text"/>
+            <input className="form-control" onChange={e => setMessage(e.target.value)} value={message} type="text"/>
             <button className="btn btn-primary" type="submit">Send</button>
         </form>
 
@@ -80,4 +83,4 @@ const Chat = () => {
   );
 };
 
-export default Chat;
+export default withAuth(Chat);

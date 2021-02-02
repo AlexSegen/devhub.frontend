@@ -1,8 +1,10 @@
 const Footer = () => {
 
+    const date = new Date();
+
     return (
-        <footer>
-            Hola este es el footer
+        <footer className="text-center p-2 text-muted">
+            &copy; {date.getFullYear() } - DevHub Community
         </footer>
     )
 }

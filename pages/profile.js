@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
-import Layout from '../components/global/Layout'
+
 import withAuth from '../components/withAuth'
+import Layout from '../components/global/Layout'
 import { AuthContext } from '../context/authContext';
 
 import styles from './profile.module.scss';
