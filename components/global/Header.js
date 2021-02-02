@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
+import { BellSolidIcon } from '../icons';
 import { AuthContext } from '../../context/authContext';
 
 import style from "./header.module.scss";
@@ -9,6 +10,7 @@ const Header = () => {
     const { Logout, user, isAuthenticated } = useContext(AuthContext);
 
     const [dropdown, setDropdown] = useState(false);
+    const [notificationsCount, setNotificationsCount] = useState(0);
 
     const SignOut  = async () => {
         Logout()
@@ -40,6 +42,8 @@ const Header = () => {
                                         <Link href="/new-post">
                                             <a className={style.cta}>Write a post</a>
                                         </Link>
+                                        
+                                        <a><BellSolidIcon/> ({notificationsCount})</a>
 
                                         <div className={style.user}>
                                             <img onClick={ () => setDropdown(!dropdown)}
