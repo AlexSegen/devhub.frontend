@@ -8,6 +8,8 @@ import Layout from "../components/global/Layout";
 
 import styles from './chat.module.scss';
 
+const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
+
 const Chat = () => {
 
   const { user } = useContext(AuthContext);
@@ -22,7 +24,7 @@ const Chat = () => {
 
       if(message && message.length > 0) {
 
-        socket.emit('chat message', {
+        socket.emit(NEW_CHAT_MESSAGE_EVENT, {
             user,
             message
         });
@@ -34,7 +36,7 @@ const Chat = () => {
 
   useEffect(() => {
     
-    socket.on('chat message', (message) => {
+    socket.on(NEW_CHAT_MESSAGE_EVENT, (message) => {
         setMessages((messages) => [...messages, message]);
         chatBody.current.scrollTo(0, document.body.scrollHeight);
     });
