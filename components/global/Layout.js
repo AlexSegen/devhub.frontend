@@ -22,7 +22,7 @@ const Layout = ({title, description, location, grid, children}) => {
                 return styles.__post
         
             default:
-                return styles.__home
+                return ""
         }
     }
 

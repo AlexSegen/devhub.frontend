@@ -2,7 +2,7 @@
 import { useContext } from 'react';
 import { AuthContext } from '../context/authContext';
 
-import Unauthorized from '../pages/unauthorized';
+import Redirect from '../pages/redirect';
 
 const withAuth = (Component) => {
   const Auth = (props) => {
@@ -10,7 +10,7 @@ const withAuth = (Component) => {
     const { isAuthenticated } = useContext(AuthContext);
 
     if (!isAuthenticated)
-        return <Unauthorized/>;
+        return <Redirect/>;
 
     // If user is logged in, return original component
     return <Component {...props} />;

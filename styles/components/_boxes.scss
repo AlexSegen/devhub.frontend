@@ -5,5 +5,8 @@
         border: 1px solid #ddd;
         background: #fff;
         margin-bottom: 15px;
+        &.__page {
+            min-height: 80vh;
+        }
     }
 }

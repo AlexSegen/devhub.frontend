@@ -1,3 +1,4 @@
+import PropertyList from "../compose/PropertyList";
 import UserCard from "../sidebars/UserCard";
 
 const RightSidebar = ({location}) => {
@@ -6,6 +7,8 @@ const RightSidebar = ({location}) => {
         <div>
             
             {location === "article" && <UserCard/>}
+
+            {location === "compose" && <PropertyList/>}
         
         </div>
     )
